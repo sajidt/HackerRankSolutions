@@ -58,20 +58,57 @@ class TimeConv {
     }
 }
 
+class gradingStud {
+
+    /*
+     * Complete the 'gradingStudents' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY grades as parameter.
+     */
+
+    public static List<Integer> gradingStudents(List<Integer> grades) {
+        // Write your code here
+        int rem = 0;
+        List<Integer> retList = new ArrayList<Integer>();
+        for ( int i = 0; i < grades.size(); i++) {
+            if ( grades.get(i) > 37 ) {
+                rem = grades.get(i)%5;
+                if (rem > 2) { 
+                    retList.add(grades.get(i) + 5- rem);
+                } else {
+                    retList.add(grades.get(i));
+                }
+            } else {
+                retList.add(grades.get(i));
+            }
+        }
+        return retList;
+    }
+
+}
+
 public class Main {
     public static void main(String[] args) throws IOException {
         //BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String s = "07:05:45PM";  //bufferedReader.readLine();
+        List<Integer> grades = new ArrayList<Integer>();
+        grades.add(73);
+        grades.add(67);
+        grades.add(38);
+        grades.add(33);
 
-        String result = TimeConv.timeConversion(s);
+        List<Integer> result = gradingStud.gradingStudents(grades);
+        //String result = TimeConv.timeConversion(s);
 
         //bufferedWriter.write(result);
         //bufferedWriter.newLine();
 
        // bufferedReader.close();
-        System.out.println("Mil Time:" + result);
+        //System.out.println("Mil Time:" + result);
+        System.out.println("Result=" +result);
         //bufferedWriter.close();
     }
 }
